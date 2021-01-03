@@ -6,6 +6,7 @@ import { SignUpModal } from "./components";
 
 const App = () => {
     const [useDarkTheme, setUseDarkTheme] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     return (
     <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
     <button
@@ -34,6 +35,20 @@ const App = () => {
       >
         Default theme
       </button>
+
+      <button
+        style={{
+          margin: "0 16px 24px",
+          padding: "8px",
+          background: "none",
+          cursor: "pointer",
+          border: "2px solid #000",
+          marginTop: "60px"
+        }}
+        onClick={() => setShowModal(!showModal)}
+      >
+        Toggle modal
+      </button>
       <div
         style={{
           background: useDarkTheme
@@ -49,7 +64,7 @@ const App = () => {
         {/* <PrimaryButton modifiers={["small", "success", "primaryButtonSuccess"]}>Hello World</PrimaryButton>
         <SecondaryButton modifiers={["large", "warning", "secondaryButtonWarning"]}>Goodbye World</SecondaryButton>
         <TertiaryButton>Hey World</TertiaryButton> */}
-        <SignUpModal />
+        <SignUpModal showModal={showModal} setShowModal={setShowModal} />
         </div>
         <GlobalStyle />
         </ThemeProvider>
